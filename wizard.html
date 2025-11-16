@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTM Infrastructure Signal Rating</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        /* Alpine System CSS Variables */
+        :root {
+            --navy: #00002c;
+            --blue: #0060ff;
+            --cyan: #00ffff;
+            --gold: #fbae17;
+            --gray: #9aa4b2;
+            --mid: #11113d;
+            --card: #0b0b2f;
+            --white: #ffffff;
+            --muted: #9da3ae;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #ff9800;
+            --radius-xl: 20px;
+            --shadow-sm: 0 10px 30px rgba(0,0,0,.35);
+            --shadow-lg: 0 24px 60px rgba(0,0,0,.45);
+            --grad: linear-gradient(135deg, var(--blue), var(--cyan));
+            --spacing-2: 10px;
+            --spacing-3: 12px;
+            --spacing-4: 16px;
+            --spacing-5: 18px;
+
+            /* Navigation-specific variables */
+            --surface: #141b2d;
+            --border: rgba(0,255,255,.15);
+            --light-gray: #a0a9c0;
+            --green: #00ff88;
+            --radius: 8px;
+            --spacing-8: 2rem;
+            --glow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            background: radial-gradient(1200px 600px at 15% -10%, rgba(0,255,255,.08), transparent 60%),
+                        radial-gradient(800px 500px at 85% 10%, rgba(0,96,255,.10), transparent 60%),
+                        var(--navy);
+            color: var(--white);
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .eyebrow {
+            color: var(--cyan);
+            font-weight: 600;
+            letter-spacing: .3px;
+            text-transform: uppercase;
+            font-size: .8rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 var(--spacing-8);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 128px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-8);
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .logo img {
+            height: 64px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-4);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            padding: var(--spacing-2) var(--spacing-4);
+            color: var(--light-gray);
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--cyan);
+            background: rgba(0,255,255,.1);
+        }
+
+        .nav-link.active {
+            color: var(--cyan);
+            background: rgba(0,255,255,.15);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+        }
+
+        .btn-portfolio {
+            padding: var(--spacing-2) var(--spacing-4);
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--green);
+            color: var(--green);
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+            cursor: pointer;
+        }
+
+        .btn-portfolio:hover {
+            background: rgba(0, 255, 136, 0.2);
+            box-shadow: var(--glow);
+        }
+
+        /* Wizard-specific styles */
+        .wizard-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--card);
+            border: 1px solid rgba(0,255,255,.1);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .wizard-container::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 4px;
+            background: var(--grad);
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+
+        .wizard-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .wizard-header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            color: var(--white);
+            margin: 10px 0 16px;
+        }
+
+        .wizard-header p {
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid rgba(0,255,255,.2);
+            border-radius: var(--spacing-3);
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            color: var(--white);
+            background: var(--mid);
+            transition: border-color 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: #13134a;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background: var(--mid);
+            border: 1px solid rgba(0,255,255,.2);
+            border-radius: 999px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--grad);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .question-card {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question-card.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            color: var(--cyan);
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+        }
+
+        .question-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        .question-category {
+            display: inline-block;
+            background: rgba(0,255,255,.1);
+            border: 1px solid rgba(0,255,255,.3);
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 12px;
+            color: var(--cyan);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .option-group {
+            margin-bottom: 30px;
+        }
+
+        .scale-option {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px;
+            border: 2px solid rgba(0,255,255,.15);
+            background: var(--mid);
+            border-radius: var(--spacing-3);
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .scale-option:hover {
+            border-color: var(--cyan);
+            background: #13134a;
+        }
+
+        .scale-option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+            accent-color: var(--cyan);
+        }
+
+        .scale-option.selected {
+            border-color: var(--cyan);
+            background: #13134a;
+            box-shadow: 0 2px 8px rgba(0,255,255,.25);
+        }
+
+        .option-label {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .option-description {
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        .dropdown-select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid rgba(0,255,255,.2);
+            background: var(--mid);
+            color: var(--white);
+            border-radius: var(--spacing-3);
+            font-size: 18px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .dropdown-select:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: #13134a;
+        }
+
+        .dropdown-select option {
+            background: var(--mid);
+            color: var(--white);
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: var(--spacing-3) var(--spacing-4);
+            border-radius: var(--spacing-3);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: .2px;
+            cursor: pointer;
+            transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+            border: 1px solid transparent;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--grad);
+            color: var(--navy);
+            box-shadow: 0 8px 24px rgba(0,255,255,.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(0,255,255,.35);
+        }
+
+        .btn-primary:disabled {
+            background: #4a4a5e;
+            color: var(--muted);
+            cursor: not-allowed;
+            opacity: 0.5;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-secondary {
+            background: var(--mid);
+            color: var(--white);
+            border-color: rgba(0,255,255,.25);
+        }
+
+        .btn-secondary:hover {
+            background: #13134a;
+            border-color: var(--cyan);
+        }
+
+        .results-container {
+            display: none;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 2px solid rgba(0,255,255,.1);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 4px;
+            background: var(--grad);
+            border-radius: 16px 16px 0 0;
+        }
+
+        .pattern-alert {
+            background: var(--mid);
+            border-left: 4px solid var(--warning);
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pattern-alert.HIGH {
+            border-left-color: var(--danger);
+        }
+
+        .pattern-alert.MEDIUM {
+            border-left-color: var(--warning);
+        }
+
+        .pattern-alert.LOW {
+            border-left-color: var(--blue);
+        }
+
+        .pattern-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--white);
+        }
+
+        .pattern-impact {
+            background: rgba(0,0,0,.2);
+            padding: 16px;
+            border-radius: 6px;
+            margin: 16px 0;
+            color: var(--muted);
+        }
+
+        .recommended-fix {
+            background: rgba(16,185,129,.1);
+            border: 1px solid rgba(16,185,129,.2);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+            color: var(--white);
+        }
+
+        .upgrade-cta {
+            background: var(--grad);
+            color: var(--navy);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 12px 30px rgba(0,255,255,.25);
+        }
+
+        .upgrade-cta h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--card);
+            border: 1px solid rgba(0,255,255,.2);
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 100px auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .spinner {
+            border: 4px solid rgba(0,255,255,.2);
+            border-top: 4px solid var(--cyan);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .loading-spinner p {
+            color: var(--white);
+            font-size: 16px;
+            margin: 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Alpine Logo */
+        .alpine-logo {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0 10px 0;
+        }
+
+        .alpine-logo-img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Alpine Footer */
+        .alpine-footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(0,255,255,.2);
+            background: linear-gradient(180deg, transparent 0%, rgba(0,255,255,.03) 100%);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-copyright {
+            font-size: 0.95em;
+            color: var(--muted);
+            margin-bottom: 8px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9em;
+            color: var(--cyan);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="wizard-container" id="wizardContainer">
+        <div class="wizard-header">
+            <h1>Alpine Signal Rating (ASR™)</h1>
+            <p class="eyebrow" style="color: var(--cyan); text-transform: uppercase; font-weight: 600;">GTM Infrastructure Signal Rating</p>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--muted);">Answer 5 context questions + 5 strategy signals → Get your personalized GTM health score and install-ready roadmap.</p>
+        </div>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="progress-text" id="progressText">Step 0 of 9</div>
+
+        <!-- Questions 1-4 will be generated by JavaScript and inserted here -->
+        <!-- Cohort qualifiers will be interspersed by JavaScript -->
+
+        <!-- Cohort Qualifier: ARR -->
+        <div class="question-card" id="cohort-arr" style="display:none;">
+            <div class="question-number">Company Context: ARR (3 of 9)</div>
+            <div class="question-text">What's your approximate ARR?</div>
+            <div class="option-group">
+                <select class="dropdown-select" id="arr-select">
+                    <option value="">Select ARR Range...</option>
+                    <option value="Cohort_1">$0-10M - Foundation Builders / Early Scalers</option>
+                    <option value="Cohort_2">$10-50M - Growth Accelerators / Process Optimizers</option>
+                    <option value="Cohort_3">$50-150M - Market Expanders / Efficiency Drivers</option>
+                    <option value="Cohort_4">>$150M - Enterprise Scale</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cohort Qualifier: Sector -->
+        <div class="question-card" id="cohort-sector" style="display:none;">
+            <div class="question-number">Company Context: Sector (5 of 9)</div>
+            <div class="question-text">What sector/industry are you in?</div>
+            <div class="option-group">
+                <select class="dropdown-select" id="sector-select">
+                    <option value="">Select sector...</option>
+                    <option value="b2b_saas">B2B SaaS</option>
+                    <option value="enterprise_software">Enterprise Software</option>
+                    <option value="marketplace">Marketplace / Platform</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Cohort Qualifier: Employees -->
+        <div class="question-card" id="cohort-employees" style="display:none;">
+            <div class="question-number">Company Context: Team Size (7 of 9)</div>
+            <div class="question-text">How many employees does your company have?</div>
+            <div class="option-group">
+                <select class="dropdown-select" id="employees-select">
+                    <option value="">Select employee count...</option>
+                    <option value="1-50">1-50 employees - Small team / Early stage</option>
+                    <option value="51-200">51-200 employees - Mid-size / Growth stage</option>
+                    <option value="201-500">201-500 employees - Large / Scaling</option>
+                    <option value="500+">500+ employees - Enterprise</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Question 5: Top Challenge -->
+        <div class="question-card" id="question-5">
+            <div class="question-number">Top GTM Challenge (8 of 9)</div>
+            <div class="question-text">QUESTION 5: What's your single biggest GTM challenge right now?</div>
+            <p style="color: var(--muted); font-size: 15px; margin-bottom: 20px;">Select the primary breakdown area:</p>
+            <div class="option-group" id="challenge-options">
+                <!-- Generated by JS -->
+            </div>
+        </div>
+
+        <!-- Final Step: Optional Contact Info -->
+        <div class="question-card" id="final-step">
+            <div class="question-number">Get Your Results (9 of 9)</div>
+            <div class="question-text">Ready to See Your GTM Signal Rating?</div>
+            <p style="color: var(--muted); font-size: 15px; margin-bottom: 30px; line-height: 1.6;">
+                Your Alpine Infrastructure Score (AIS™) is ready.<br>
+                Enter your details below — not required — to receive a full diagnostic PDF — including ASR™ breakdowns and prioritized Fix Console recommendations.
+            </p>
+
+            <div class="option-group">
+                <label style="display: block; font-weight: 600; color: var(--white); margin-bottom: 8px;">Company Name <span style="color: var(--muted); font-weight: 400;">(optional)</span></label>
+                <input type="text" id="company-name-final" placeholder="Enter your company name" style="margin-bottom: 20px;">
+
+                <label style="display: block; font-weight: 600; color: var(--white); margin-bottom: 8px;">Email <span style="color: var(--muted); font-weight: 400;">(optional)</span></label>
+                <input type="email" id="email-final" placeholder="you@email.com" style="margin-bottom: 20px;">
+
+                <p style="font-size: 13px; color: var(--muted); margin-top: 8px; line-height: 1.5;">
+                    <svg style="width: 14px; height: 14px; display: inline; vertical-align: middle; margin-right: 4px;" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Providing your email enables delivery of your personalized report. Your data is never shared — Alpine only uses it to deliver diagnostic results.
+                </p>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" style="visibility: hidden;">Previous</button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+        </div>
+    </div>
+
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+        <p>Analyzing your GTM metrics...</p>
+    </div>
+
+    <div class="results-container" id="resultsContainer">
+        <!-- Results will be populated by JavaScript -->
+    </div>
+
+    <footer class="alpine-footer">
+        <div class="footer-content">
+            <div class="footer-copyright">
+                © The Alpine System 2025
+            </div>
+            <div class="footer-tagline">
+                Assess.Fix.Scale.Repeat.
+            </div>
+        </div>
+    </footer>
+
+    <script src="wizard.js"></script>
+</body>
+</html>

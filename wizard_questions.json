@@ -1,0 +1,354 @@
+{
+  "wizard_metadata": {
+    "version": "2.0",
+    "total_questions": 5,
+    "total_qualifiers": 3,
+    "estimated_completion_time_minutes": 3,
+    "accuracy_note": "Provides directional estimates. Use full 25-metric diagnostic for precision."
+  },
+
+  "qualifiers": {
+    "arr": {
+      "question_number": 0,
+      "question": "What's your approximate Annual Recurring Revenue?",
+      "type": "dropdown",
+      "required": true,
+      "options": [
+        {"value": "Cohort_1", "label": "<$5M", "description": "Foundation Builders / Early Scalers"},
+        {"value": "Cohort_2", "label": "$5M-$25M", "description": "Growth Accelerators / Process Optimizers"},
+        {"value": "Cohort_3", "label": "$25M-$75M", "description": "Market Expanders / Efficiency Drivers"},
+        {"value": "Cohort_4", "label": "$75M-$250M", "description": "Enterprise Scale"},
+        {"value": "Cohort_4", "label": "$250M+", "description": "Enterprise Scale"}
+      ],
+      "purpose": "Determines which benchmarks to use for scoring"
+    },
+
+    "employees": {
+      "question_number": 1,
+      "question": "How many employees does your company have?",
+      "type": "dropdown",
+      "required": true,
+      "options": [
+        {"value": "1-50", "label": "1-50 employees", "description": "Small team / Early stage"},
+        {"value": "51-200", "label": "51-200 employees", "description": "Mid-size / Growth stage"},
+        {"value": "201-500", "label": "201-500 employees", "description": "Large / Scaling"},
+        {"value": "500+", "label": "500+ employees", "description": "Enterprise"}
+      ],
+      "purpose": "Context for operational maturity"
+    },
+
+    "sector": {
+      "question_number": 2,
+      "question": "What sector/industry are you in?",
+      "type": "dropdown",
+      "required": true,
+      "options": [
+        {"value": "b2b_saas", "label": "B2B SaaS", "description": "Software as a Service for businesses"},
+        {"value": "b2c_saas", "label": "B2C SaaS", "description": "Software as a Service for consumers"},
+        {"value": "enterprise_software", "label": "Enterprise Software", "description": "On-premise or hybrid enterprise solutions"},
+        {"value": "marketplace", "label": "Marketplace / Platform", "description": "Two-sided marketplace or platform business"},
+        {"value": "ecommerce", "label": "E-commerce / DTC", "description": "Direct to consumer sales"},
+        {"value": "services", "label": "Professional Services", "description": "Consulting, agency, services-led"},
+        {"value": "other", "label": "Other", "description": "Different business model"}
+      ],
+      "purpose": "Context for industry-specific benchmarks"
+    }
+  },
+
+  "questions": {
+    "cohort_selection": {
+      "question_number": 0,
+      "question": "What's your approximate Annual Recurring Revenue?",
+      "type": "dropdown",
+      "required": true,
+      "deprecated": true,
+      "note": "Moved to qualifiers.arr in v2.0",
+      "options": [
+        {"value": "Cohort_1", "label": "$0-10M", "description": "Foundation Builders / Early Scalers"},
+        {"value": "Cohort_2", "label": "$10-35M", "description": "Growth Accelerators / Process Optimizers"},
+        {"value": "Cohort_3", "label": "$35-50M", "description": "Market Expanders / Efficiency Drivers"},
+        {"value": "Cohort_4", "label": ">$50M", "description": "Enterprise Scale"}
+      ],
+      "purpose": "Determines which benchmarks to use for scoring"
+    },
+
+    "question_1_pipeline_health": {
+      "question_number": 1,
+      "question": "How would you rate your overall pipeline health and lead generation?",
+      "category": "Pipeline Health",
+      "scale": "1-5",
+      "required": true,
+      "descriptors": {
+        "1": "Severe breakdown — minimal volume · poor fit · unstable inflow",
+        "2": "Volatile signal — inconsistent quality · sales complaints · volume gap",
+        "3": "Baseline function — meets current load · lacks consistency or optimization",
+        "4": "Stabilized system — qualified inflow · reliable pacing · target-aligned",
+        "5": "Compoundable edge — abundant qualified volume · predictable · high-efficiency flow"
+      },
+      "maps_to_metrics": {
+        "1": {
+          "lead_velocity_rate": 0.03,
+          "mql_to_sql_conversion": 0.12,
+          "marketing_contribution_pipeline": 0.20,
+          "pipeline_coverage_ratio": 1.8,
+          "inbound_lead_volume_growth": 0.05,
+          "lead_response_time": 24.0
+        },
+        "2": {
+          "lead_velocity_rate": 0.05,
+          "mql_to_sql_conversion": 0.15,
+          "marketing_contribution_pipeline": 0.25,
+          "pipeline_coverage_ratio": 2.2,
+          "inbound_lead_volume_growth": 0.10,
+          "lead_response_time": 12.0
+        },
+        "3": {
+          "lead_velocity_rate": 0.07,
+          "mql_to_sql_conversion": 0.18,
+          "marketing_contribution_pipeline": 0.28,
+          "pipeline_coverage_ratio": 2.8,
+          "inbound_lead_volume_growth": 0.15,
+          "lead_response_time": 8.0
+        },
+        "4": {
+          "lead_velocity_rate": 0.09,
+          "mql_to_sql_conversion": 0.22,
+          "marketing_contribution_pipeline": 0.32,
+          "pipeline_coverage_ratio": 3.2,
+          "inbound_lead_volume_growth": 0.20,
+          "lead_response_time": 4.0
+        },
+        "5": {
+          "lead_velocity_rate": 0.12,
+          "mql_to_sql_conversion": 0.28,
+          "marketing_contribution_pipeline": 0.38,
+          "pipeline_coverage_ratio": 3.8,
+          "inbound_lead_volume_growth": 0.25,
+          "lead_response_time": 2.0
+        }
+      }
+    },
+
+    "question_2_sales_conversion": {
+      "question_number": 2,
+      "question": "How effective is your sales team at converting qualified opportunities to closed deals?",
+      "category": "Conversion Health",
+      "scale": "1-5",
+      "required": true,
+      "descriptors": {
+        "1": "System breakdown — low win rate · stalled cycles · frequent loss points",
+        "2": "Underperforming loop — erratic execution · missed targets · low conversion confidence",
+        "3": "Functional but unstable — moderate outcomes · room to stabilize and improve",
+        "4": "Efficient motion — solid win rates · predictable pacing · reliable team execution",
+        "5": "High-performance loop — fast cycles · high conversion · replicable competitive edge"
+      },
+      "maps_to_metrics": {
+        "1": {
+          "win_rate": 0.12,
+          "sales_cycle_length": 180,
+          "sql_acceptance_rate": 0.60,
+          "demo_to_proposal_rate": 0.35,
+          "proposal_to_won_rate": 0.30,
+          "pipeline_conversion_rate": 0.18
+        },
+        "2": {
+          "win_rate": 0.16,
+          "sales_cycle_length": 150,
+          "sql_acceptance_rate": 0.68,
+          "demo_to_proposal_rate": 0.42,
+          "proposal_to_won_rate": 0.38,
+          "pipeline_conversion_rate": 0.23
+        },
+        "3": {
+          "win_rate": 0.20,
+          "sales_cycle_length": 120,
+          "sql_acceptance_rate": 0.75,
+          "demo_to_proposal_rate": 0.50,
+          "proposal_to_won_rate": 0.45,
+          "pipeline_conversion_rate": 0.28
+        },
+        "4": {
+          "win_rate": 0.25,
+          "sales_cycle_length": 90,
+          "sql_acceptance_rate": 0.82,
+          "demo_to_proposal_rate": 0.60,
+          "proposal_to_won_rate": 0.55,
+          "pipeline_conversion_rate": 0.34
+        },
+        "5": {
+          "win_rate": 0.32,
+          "sales_cycle_length": 60,
+          "sql_acceptance_rate": 0.90,
+          "demo_to_proposal_rate": 0.72,
+          "proposal_to_won_rate": 0.68,
+          "pipeline_conversion_rate": 0.42
+        }
+      }
+    },
+
+    "question_3_customer_success": {
+      "question_number": 3,
+      "question": "How well are you retaining and expanding revenue from existing customers?",
+      "category": "Expansion Health",
+      "scale": "1-5",
+      "required": true,
+      "descriptors": {
+        "1": "Major issues — high churn · no expansion · customers frequently leaving",
+        "2": "Struggling — losing revenue · minimal upsells · significant retention challenges",
+        "3": "Stable — mostly retaining customers · some expansion happening sporadically",
+        "4": "Strong — good retention · systematic expansion approach · growing accounts",
+        "5": "Excellent — minimal churn · strong expansion engine · predictable account growth"
+      },
+      "maps_to_metrics": {
+        "1": {
+          "nrr": 0.85,
+          "grr": 0.80,
+          "churn_rate": 0.15,
+          "expansion_revenue_growth": 0.03,
+          "nps": 20,
+          "time_to_first_value": 60
+        },
+        "2": {
+          "nrr": 0.95,
+          "grr": 0.88,
+          "churn_rate": 0.10,
+          "expansion_revenue_growth": 0.08,
+          "nps": 30,
+          "time_to_first_value": 45
+        },
+        "3": {
+          "nrr": 1.03,
+          "grr": 0.93,
+          "churn_rate": 0.07,
+          "expansion_revenue_growth": 0.13,
+          "nps": 38,
+          "time_to_first_value": 30
+        },
+        "4": {
+          "nrr": 1.11,
+          "grr": 0.96,
+          "churn_rate": 0.04,
+          "expansion_revenue_growth": 0.20,
+          "nps": 48,
+          "time_to_first_value": 18
+        },
+        "5": {
+          "nrr": 1.20,
+          "grr": 0.98,
+          "churn_rate": 0.02,
+          "expansion_revenue_growth": 0.28,
+          "nps": 58,
+          "time_to_first_value": 10
+        }
+      }
+    },
+
+    "question_4_economics_and_efficiency": {
+      "question_number": 4,
+      "question": "How healthy are your unit economics and operational efficiency?",
+      "category": "Economics & Efficiency",
+      "scale": "1-5",
+      "required": true,
+      "descriptors": {
+        "1": "System failure — cash burn · high CAC · manual chaos · low yield per head",
+        "2": "Fragile structure — tight margins · inefficiencies · below-average productivity",
+        "3": "Stable baseline — functional unit economics · ops not yet optimized",
+        "4": "Efficient system — solid LTV:CAC · clean payback · productive ops",
+        "5": "High-leverage engine — fast ROI cycles · lean operations · margin-maximized"
+      },
+      "maps_to_metrics": {
+        "1": {
+          "cac_payback_period": 26,
+          "ltv_cac": 1.5,
+          "burn_multiple": 4.0,
+          "sales_rep_ramp_time": 6.5,
+          "quota_attainment": 0.30,
+          "magic_number": 0.35,
+          "rule_of_40": 10
+        },
+        "2": {
+          "cac_payback_period": 20,
+          "ltv_cac": 2.3,
+          "burn_multiple": 2.8,
+          "sales_rep_ramp_time": 5.0,
+          "quota_attainment": 0.42,
+          "magic_number": 0.55,
+          "rule_of_40": 22
+        },
+        "3": {
+          "cac_payback_period": 15,
+          "ltv_cac": 3.2,
+          "burn_multiple": 1.8,
+          "sales_rep_ramp_time": 4.0,
+          "quota_attainment": 0.58,
+          "magic_number": 0.78,
+          "rule_of_40": 38
+        },
+        "4": {
+          "cac_payback_period": 11,
+          "ltv_cac": 4.2,
+          "burn_multiple": 1.2,
+          "sales_rep_ramp_time": 3.0,
+          "quota_attainment": 0.72,
+          "magic_number": 0.95,
+          "rule_of_40": 48
+        },
+        "5": {
+          "cac_payback_period": 7,
+          "ltv_cac": 5.8,
+          "burn_multiple": 0.8,
+          "sales_rep_ramp_time": 2.0,
+          "quota_attainment": 0.88,
+          "magic_number": 1.25,
+          "rule_of_40": 62
+        }
+      }
+    },
+
+    "question_5_top_challenge": {
+      "question_number": 5,
+      "question": "What's your single biggest GTM challenge right now?",
+      "type": "multiple_choice",
+      "required": true,
+      "options": [
+        {
+          "value": "pipeline",
+          "label": "Not enough qualified leads",
+          "category": "→ Pipeline",
+          "weight_adjustment": {"Pipeline": 1.2}
+        },
+        {
+          "value": "conversion",
+          "label": "Can't close deals fast enough",
+          "category": "→ Conversion",
+          "weight_adjustment": {"Conversion": 1.2}
+        },
+        {
+          "value": "retention",
+          "label": "Customers churning or not expanding",
+          "category": "→ Expansion",
+          "weight_adjustment": {"Expansion": 1.2}
+        },
+        {
+          "value": "efficiency",
+          "label": "Operations too manual / inefficient",
+          "category": "→ Efficiency",
+          "suggests_chapter": "Chapter_9"
+        },
+        {
+          "value": "economics",
+          "label": "Unit economics don't work",
+          "category": "→ Economics",
+          "suggests_chapter": "Chapter_4"
+        },
+        {
+          "value": "structure",
+          "label": "Team can't execute consistently",
+          "category": "→ Structure",
+          "suggests_chapter": "Chapter_10"
+        }
+      ],
+      "purpose": "Weight the analysis toward their stated priority and flag for pattern detection"
+    }
+  }
+}

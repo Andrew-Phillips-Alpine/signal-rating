@@ -1,0 +1,157 @@
+{
+  "pipeline_fixes": [
+    {
+      "name": "ICP Refinement",
+      "description": "Sharpen your Ideal Customer Profile to target high-intent buyers who convert faster and retain longer.",
+      "impact": "Reduces wasted pipeline by 30-40% and increases MQL-to-SQL conversion by 25%",
+      "implementation": "2-3 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Lead Response Time Optimization",
+      "description": "Implement automated lead routing and instant follow-up systems to contact leads within 5 minutes.",
+      "impact": "Increases conversion rates by 21x when responding within 5 minutes vs 30 minutes",
+      "implementation": "1-2 weeks",
+      "difficulty": "Easy"
+    },
+    {
+      "name": "MQL-to-SQL Conversion Process",
+      "description": "Build scoring criteria and handoff procedures between marketing and sales to qualify leads effectively.",
+      "impact": "Improves SQL acceptance rate from 60% to 85%+",
+      "implementation": "2-4 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Pipeline Coverage Forecasting",
+      "description": "Establish 3-4x coverage ratio targets and implement weekly pipeline generation reviews.",
+      "impact": "Ensures predictable revenue and identifies gaps 60-90 days in advance",
+      "implementation": "1 week",
+      "difficulty": "Easy"
+    },
+    {
+      "name": "Lead Velocity Tracking",
+      "description": "Monitor net new opportunities entering pipeline each month and track growth trends.",
+      "impact": "Provides early warning system for revenue gaps",
+      "implementation": "1 week",
+      "difficulty": "Easy"
+    }
+  ],
+  "conversion_fixes": [
+    {
+      "name": "Win Rate Analysis & Optimization",
+      "description": "Analyze won vs lost deals to identify patterns, then build playbooks around winning behaviors.",
+      "impact": "Increases win rates by 15-30% within one quarter",
+      "implementation": "3-4 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Sales Cycle Compression",
+      "description": "Map your buyer journey, identify delays, and implement async decision-making tools (ROI calculators, comparison guides).",
+      "impact": "Reduces sales cycle by 20-35%",
+      "implementation": "4-6 weeks",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Demo-to-Proposal Conversion",
+      "description": "Create discovery frameworks and qualification checklists to ensure demos lead to proposals.",
+      "impact": "Improves demo-to-proposal rate from 40% to 65%+",
+      "implementation": "2-3 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Proposal-to-Close Optimization",
+      "description": "Standardize pricing, terms, and negotiation parameters to reduce friction in final stages.",
+      "impact": "Increases close rates by 20% and reduces discount pressure",
+      "implementation": "2-3 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Sales Rep Ramp Time Reduction",
+      "description": "Build onboarding playbooks, certification programs, and shadowing schedules for new reps.",
+      "impact": "Cuts ramp time from 6 months to 3-4 months",
+      "implementation": "4-6 weeks",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Quota Attainment Improvement",
+      "description": "Analyze rep performance, set realistic quotas, and implement coaching programs for underperformers.",
+      "impact": "Increases % of reps hitting quota from 40% to 70%+",
+      "implementation": "Ongoing (3+ months)",
+      "difficulty": "Hard"
+    }
+  ],
+  "expansion_fixes": [
+    {
+      "name": "Churn Reduction Program",
+      "description": "Identify at-risk customers early through usage monitoring and implement save plays.",
+      "impact": "Reduces churn by 30-50% within 6 months",
+      "implementation": "4-6 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Net Revenue Retention (NRR) Optimization",
+      "description": "Build expansion playbooks for upsells, cross-sells, and multi-year renewals.",
+      "impact": "Increases NRR from 95% to 110%+ over 12 months",
+      "implementation": "3-4 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Time-to-First-Value Acceleration",
+      "description": "Map onboarding journey and remove friction points so customers see value in 30 days or less.",
+      "impact": "Increases 90-day retention by 40%+",
+      "implementation": "4-8 weeks",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Expansion Revenue Playbook",
+      "description": "Create triggers for when to introduce upsells (usage milestones, renewal timing, new features).",
+      "impact": "Grows expansion revenue from 5% to 20% of total revenue",
+      "implementation": "3-4 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "Customer Health Scoring",
+      "description": "Implement product usage tracking, NPS monitoring, and engagement scoring to predict churn.",
+      "impact": "Enables proactive intervention 60-90 days before churn",
+      "implementation": "3-4 weeks",
+      "difficulty": "Medium"
+    },
+    {
+      "name": "NPS & Customer Feedback Loop",
+      "description": "Establish regular customer surveys and close-the-loop processes to address feedback quickly.",
+      "impact": "Increases NPS by 15-25 points and reduces feature request backlog",
+      "implementation": "2-3 weeks",
+      "difficulty": "Easy"
+    }
+  ],
+  "economics_fixes": [
+    {
+      "name": "CAC Payback Period Reduction",
+      "description": "Optimize pricing, reduce sales costs, and accelerate customer payments to improve payback time.",
+      "impact": "Reduces payback from 18 months to <12 months",
+      "implementation": "3-6 months",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "LTV:CAC Ratio Improvement",
+      "description": "Increase customer lifetime value through retention and expansion while reducing acquisition costs.",
+      "impact": "Improves ratio from 2:1 to 4:1+",
+      "implementation": "6-12 months",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Magic Number Optimization",
+      "description": "Balance sales & marketing spend with revenue generation to achieve sustainable growth efficiency.",
+      "impact": "Targets 0.75-1.0+ magic number (efficient growth)",
+      "implementation": "Ongoing",
+      "difficulty": "Hard"
+    },
+    {
+      "name": "Rule of 40 Achievement",
+      "description": "Balance growth rate and profitability to achieve combined score of 40%+.",
+      "impact": "Positions company for Series B+ funding or profitability",
+      "implementation": "12+ months",
+      "difficulty": "Hard"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+
+# Credentials
+config/sendgrid_credentials.json
+config/*_credentials.json
+
+# Data files (contains user submissions)
+submissions_data.json
+
+# Temporary PDF files
+temp_pdfs/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Production build (if any)
+dist/
+build/
