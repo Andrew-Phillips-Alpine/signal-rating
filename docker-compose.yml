@@ -12,8 +12,6 @@ services:
       - SENDGRID_API_KEY=${SENDGRID_API_KEY}
       - EMAIL_FROM=${EMAIL_FROM}
       - EMAIL_TO=${EMAIL_TO}
-    ports:
-      - "3000:3000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.alpine-signal-rating-leadmagnet.rule=Host(`signal.thealpinesystem.com`,`www.signal.thealpinesystem.com`)"
